@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+</head>
+<body>
+    <script>
+        !function(){document.body.innerHTML=`
+    <div style="display: flex; justify-content: center; align-items: center; height: 100vh; background: white;">
+      <div id="scoreBoard" style="position: absolute; top: calc(50% - 216px);"></div>
+      <canvas id="snakeGame" width="400" height="400"></canvas>
+    </div>
+  `;let e=document.getElementById("snakeGame"),$=e.getContext("2d"),t=20,y,i,x,r,h,l,s,o,a,n;function f(){y=[{x:e.width/2,y:e.height/2}],x=r=0,h=!1,l=0,s=!1,o=1,a=200,c(),_(),d()}function _(){i={x:Math.floor(Math.random()*(e.width/t))*t,y:Math.floor(Math.random()*(e.height/t))*t},(n.some(e=>e.x===i.x&&e.y===i.y)||y.some(e=>e.x===i.x&&e.y===i.y))&&_()}function c(){switch(o){case 1:n=[];for(let $=0;$<e.width;$+=t)n.push({x:$,y:0}),n.push({x:$,y:e.height-t});for(let y=t;y<e.height-t;y+=t)n.push({x:0,y:y}),n.push({x:e.width-t,y:y});break;case 2:n=[{x:120,y:120},{x:140,y:120},{x:120,y:140},{x:140,y:140},{x:260,y:120},{x:280,y:120},{x:260,y:140},{x:280,y:140},{x:120,y:260},{x:140,y:260},{x:120,y:280},{x:140,y:280},{x:260,y:260},{x:280,y:260},{x:260,y:280},{x:280,y:280},];for(let i=0;i<e.width;i+=t)n.push({x:i,y:0}),n.push({x:i,y:e.height-t});for(let x=t;x<e.height-t;x+=t)n.push({x:0,y:x}),n.push({x:e.width-t,y:x});break;case 3:n=[{x:120,y:120},{x:140,y:120},{x:120,y:140},{x:140,y:140},{x:260,y:120},{x:280,y:120},{x:260,y:140},{x:280,y:140},{x:120,y:260},{x:140,y:260},{x:120,y:280},{x:140,y:280},{x:260,y:260},{x:280,y:260},{x:260,y:280},{x:280,y:280},];break;default:n=[]}}function d(){let e=document.getElementById("scoreBoard");e.innerText=`Score: ${l}`}document.addEventListener("keydown",e=>{switch(h?f():s||(s=!0),e.key){case"ArrowUp":0===r&&(r=-t,x=0);break;case"ArrowDown":0===r&&(r=t,x=0);break;case"ArrowLeft":0===x&&(x=-t,r=0);break;case"ArrowRight":0===x&&(x=t,r=0)}}),f(),function f(){(function $(){if(!s||h)return;let f={x:y[0].x+x,y:y[0].y+r};if(3===o)f.x<0&&(f.x=e.width-t),f.y<0&&(f.y=e.height-t),f.x>=e.width&&(f.x=0),f.y>=e.height&&(f.y=0);else if(f.x<0||f.y<0||f.x>=e.width||f.y>=e.height){h=!0;return}if(n.some(e=>e.x===f.x&&e.y===f.y)){h=!0;return}f.x===i.x&&f.y===i.y?(l+=10,d(),_(),l%50==0&&o<3&&(o++,a-=50,c())):y.pop(),y.forEach(e=>{if(f.x===e.x&&f.y===e.y){h=!0;return}}),y.unshift(f)})(),$.clearRect(0,0,e.width,e.height),$.fillStyle="lime",y.forEach(e=>{$.fillRect(e.x,e.y,t,t),$.strokeStyle="black",$.strokeRect(e.x,e.y,t,t)}),$.fillStyle="red",$.fillRect(i.x,i.y,t,t),$.fillStyle="blue",n.forEach(e=>{$.fillRect(e.x,e.y,t,t),$.strokeStyle="black",$.strokeRect(e.x,e.y,t,t)}),h&&($.fillStyle="black",$.font="32px sans-serif",$.fillText("Game Over",e.width/2-80,e.height/2),$.font="16px sans-serif",$.fillText("Press arrow key to restart",e.width/2-95,e.height/2+24)),s||($.fillStyle="black",$.font="16px sans-serif",$.fillText("Press arrow key to start the game",e.width/2-110,e.height/2)),setTimeout(f,a)}()}();
+    </script>
+</body>
+</html>
