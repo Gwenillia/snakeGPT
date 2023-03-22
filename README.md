@@ -1,2 +1,2 @@
 # snakeGPT
-a smakk snake game made by gpt4
+a small snake game made by gpt4
